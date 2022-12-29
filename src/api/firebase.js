@@ -47,5 +47,5 @@ export async function adminUser(user){
 }
 
 export async function addItem(item) {
-  return set(ref(db, item.id), item);
+  return set(ref(db, `products/${item.id}`), item);
 }

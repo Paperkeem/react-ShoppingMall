@@ -4,6 +4,7 @@ import axios from 'axios';
 import { addItem } from '../api/firebase';
 
 export default function NewProduct() {
+  const [title, setTitle] = useState('');
   const [item, setItem] = useState({
     title: "",
     price: 0,
@@ -34,41 +35,38 @@ export default function NewProduct() {
   return (
     <div className='grid grid-cols-1 gap-2 w-11/12 m-auto mt-5 '>
       <h2 className='m-auto'><b>새로운 제품 등록</b></h2>
+      {title && <h1 className='m-auto' >{title}</h1>}
       {item && <img src={item.image} alt='' className='w-5/12 m-auto' /> }
       
-      <input type="file"
-        onChange={fileUpload}
-        className='border border-zinc-300 rounded-md p-3'
-        name="" id="" />
-      <input type="text"
+      <input type="file" required
+        accept='image/*'
+        onChange={fileUpload} />
+
+      <input type="text" required
         onChange={(e) => setItem({ ...item, title: e.target.value })}
-        className='border border-zinc-300 rounded-md p-3'
         placeholder='제품명' />
-      <input type="number"
+      <input type="number" required
         onChange={(e) => setItem({ ...item, price: Number(e.target.value) })}
-        className='border border-zinc-300 rounded-md p-3'
-        name="" id="" placeholder='가격' />
-      <input type="text"
+        placeholder='가격' />
+      <input type="text" required
         onChange={(e) => setItem({ ...item, category: e.target.value })}
-        className='border border-zinc-300 rounded-md p-3'
-        name="" id="" placeholder='카테고리' />
-      <input type="text"
+        placeholder='카테고리' />
+      <input type="text" required
         onChange={(e) => setItem({ ...item, description: e.target.value })}
-        className='border border-zinc-300 rounded-md p-3'
-        name="" id="" placeholder='제품 설명' />
-      <input type="text"
+        placeholder='제품 설명' />
+      <input type="text" required
         onChange={(e) => setItem({
           ...item,
           option: e.target.value.split(",")
         })}
-        className='border border-zinc-300 rounded-md p-3'
-        name="" id="" placeholder='사이즈(,로 구분)' />
+        placeholder='사이즈(,로 구분)' />
 
       <Button text={'제품 등록하기'} onClick={() => {
-        console.log(item);
         addItem(item);
+
+        setTitle('✅ 새로운 제품이 등록되었습니다');
         setTimeout(() => {
-          
+          setTitle('')
         }, 4000);
       }} />
     </div>
