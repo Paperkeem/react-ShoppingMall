@@ -10,4 +10,3 @@ export const imageUploader = async (file) => {
   const res = await axios.post(url, formData);
   return res.data;
 }
-  

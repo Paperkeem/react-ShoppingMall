@@ -15,6 +15,7 @@ const db = getDatabase(app);
 
 const provider = new GoogleAuthProvider();
 
+// 로그인 할 시 계정 선택할 수 있도록
 provider.setCustomParameters({
 prompt: "select_account",
 });
@@ -48,4 +49,14 @@ export async function adminUser(user){
 
 export async function addItem(item) {
   return set(ref(db, `products/${item.id}`), item);
+}
+
+export async function getAllItem() {
+  return get(ref(db), 'products')
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const products = snapshot.val().products;
+        return products;
+      }
+    });
 }

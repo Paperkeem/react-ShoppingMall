@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { HiOutlinePencilAlt } from 'react-icons/hi';
 import { FiShoppingBag } from 'react-icons/fi';
 import { Login, Logout, } from '../api/firebase';
-import User from './User';
 import { AuthContext } from '../context/AuthContext';
+import User from './User';
 import Button from './ui/Button';
 
 export default function Header() {
