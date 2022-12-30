@@ -56,8 +56,19 @@ export async function getAllItem() {
     .then((snapshot) => {
       if (snapshot.exists()) {
         const products = snapshot.val().products;
-        return Object.entries(products).map((product) => (
-        { ...product[1], id: product[0] }));
+        return Object.values(products);
       }
+      return [];
+    });
+}
+
+export async function getOneItem(id) {
+  return get(ref(db), `products/${id}` )
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = Object.values(snapshot.val().products).filter(product => product.id === id);
+        return data[0];
+      }
+      return [];
     });
 }

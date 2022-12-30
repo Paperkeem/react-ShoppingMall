@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default function Product({ product }) {
-  const { id, title, price, image } = product;
+export default function Product({ product : { id, title, price, image } }) {
   return (
     <Link to={`/products/${id}`}>
       <article className='bg-slate-50 shadow-lg p-2 mt-3'>
