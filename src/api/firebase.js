@@ -56,7 +56,8 @@ export async function getAllItem() {
     .then((snapshot) => {
       if (snapshot.exists()) {
         const products = snapshot.val().products;
-        return products;
+        return Object.entries(products).map((product) => (
+        { ...product[1], id: product[0] }));
       }
     });
 }
