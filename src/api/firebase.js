@@ -61,14 +61,3 @@ export async function getAllItem() {
       return [];
     });
 }
-
-export async function getOneItem(id) {
-  return get(ref(db), `products/${id}` )
-    .then((snapshot) => {
-      if (snapshot.exists()) {
-        const data = Object.values(snapshot.val().products).filter(product => product.id === id);
-        return data[0];
-      }
-      return [];
-    });
-}

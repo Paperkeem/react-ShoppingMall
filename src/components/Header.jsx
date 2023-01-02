@@ -20,7 +20,7 @@ export default function Header() {
         <h1>Shoppy</h1>
       </Link>
       
-      <nav className='flex items-center gap-4 font-semibold'>
+      <nav className='flex flex-row items-center gap-4 font-semibold'>
         <Link to="products">Products</Link>
         {user ? <Link to="carts">Carts</Link> : null}
         {user && user.isAdmin
