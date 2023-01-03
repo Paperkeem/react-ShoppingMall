@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getDatabase, ref, get, set, remove } from "firebase/database";
 import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth';
 
 const firebaseConfig = {
@@ -52,12 +52,30 @@ export async function addItem(item) {
 }
 
 export async function getAllItem() {
-  return get(ref(db), 'products')
+  return get(ref(db, 'products'))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        const products = snapshot.val().products;
+        const products = snapshot.val();
         return Object.values(products);
       }
       return [];
     });
+}
+
+export async function addCarts(uid, cart) {
+  return set(ref(db, `carts/${uid}/${cart.id}`), cart);
+}
+
+export async function getCartList(uid) {
+  return get(ref(db, `carts/${uid}`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return Object.values(snapshot.val());
+      }
+      return [];
+    });
+}
+
+export async function removeCart(uid, id) {
+  return remove(ref(db, `carts/${uid}/${id}`));
 }
