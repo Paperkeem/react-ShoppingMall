@@ -1,30 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import { getCartList, removeCart } from '../api/firebase';
+import React from 'react';
 import Cartcard from '../components/Cartcard';
-import { useAuthContext } from '../context/AuthContext';
 import Button from '../components/ui/Button';
+import useCarts from '../hooks/useCarts';
+
+const SHIPPING = 3000;
 
 export default function MyCart() {
-  const { user } = useAuthContext();
-  const { data: cart } = useQuery(['cart', user.uid],
-    () => getCartList(user.uid));
-  let total = 0;
-  
-  const handleRemove = (id) => {
-    const uid = user && user.uid;
-    removeCart(uid, id);
-  }
+  const { cartsQuery: { data: cart, isLoding } } = useCarts();
+  let total = cart?.reduce((prev, cur) => prev + cur.price * cur.quantity, 0);
 
+  if(isLoding) return <p>Loding...</p>
   return (
     <>
       <ul className='p-3 border-b border-gray-300'>
         {cart && cart.map((cart) => {
-          total += cart.price * cart.quantity
           return <Cartcard
             key={cart.id}
             cart={cart}
-            handleRemove={handleRemove}
           />
         })}
       </ul>
@@ -38,12 +30,12 @@ export default function MyCart() {
 
         <div className='bg-gray-100 p-5 px-10'>
           <p>배송비</p>
-          <p className='text-brand'>₩ 3000</p>
+          <p className='text-brand'>₩ { SHIPPING }</p>
         </div>
 
         <div className='bg-gray-100 p-5 px-10'>
           <p>총 금액</p>
-          <p className='text-brand'>₩ { total + 3000 }</p>
+          <p className='text-brand'>₩ { total + SHIPPING }</p>
         </div>
       </section>
       

@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
-import { getCartList, onAuth } from '../api/firebase';
+import {  onAuth } from '../api/firebase';
 
 
 const AuthContext = createContext();
@@ -11,14 +10,9 @@ export function AuthProvider({ children }) {
   useEffect(() => {
     onAuth(setUser);
   }, []);
-
-  const { data: cart } = useQuery(['cart', user?.uid],
-    () => getCartList(user?.id),
-    { enabled: !!user?.uid, }
-  );
   
   return (
-    <AuthContext.Provider value={{user, cart}}>
+    <AuthContext.Provider value={{ user, uid: user?.uid }}>
       {children}
     </AuthContext.Provider>
   )

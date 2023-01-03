@@ -1,8 +1,25 @@
 import React from 'react';
 import { AiOutlinePlusSquare, AiOutlineMinusSquare } from 'react-icons/ai';
 import { RiDeleteBinLine } from 'react-icons/ri';
+import useCarts from '../hooks/useCarts';
 
-export default function Cartcard({ cart: { id, title, image, option, price, quantity }, handleRemove }) {
+const ICON_CLASS = 'transition-all text-2xl hover:text-brand hover:scale-105' 
+
+export default function Cartcard({ cart, cart: { id, title, image, option, price, quantity } }) {
+  const { minusQuery, plusQuery, deleteQuery } = useCarts();
+
+  const handleMinus = () => {
+    if (quantity < 2) return;
+    minusQuery.mutate({ cart, quantity });
+  }
+
+  const handlePlus = () => {
+    plusQuery.mutate({ cart, quantity });
+  }
+  
+  const handelDelete = () => {
+    deleteQuery.mutate({ id });
+  }
 
   return (
     <article className='flex flex-row items-center justify-between 
@@ -14,18 +31,10 @@ export default function Cartcard({ cart: { id, title, image, option, price, quan
         <p>₩ {price}</p>
       </div>
       <div className='flex gap-3'>
-        <button className='text-2xl'>
-          <AiOutlineMinusSquare />
-        </button>
+        <AiOutlineMinusSquare className={ICON_CLASS} onClick={handleMinus}/>
         <p>{quantity}</p>
-        <button className='text-2xl'>
-          <AiOutlinePlusSquare />
-        </button>
-        <button
-          onClick={() => handleRemove(id)}
-          className='text-2xl'>
-          <RiDeleteBinLine />
-        </button>
+        <AiOutlinePlusSquare className={ICON_CLASS} onClick={handlePlus}/>
+        <RiDeleteBinLine className={ICON_CLASS} onClick={handelDelete} />
       </div>
     </article>
   );

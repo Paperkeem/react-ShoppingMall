@@ -69,10 +69,8 @@ export async function addCarts(uid, cart) {
 export async function getCartList(uid) {
   return get(ref(db, `carts/${uid}`))
     .then((snapshot) => {
-      if (snapshot.exists()) {
-        return Object.values(snapshot.val());
-      }
-      return [];
+      const items = snapshot.val() || {};
+      return Object.values(items);
     });
 }
 

@@ -6,10 +6,12 @@ import { Login, Logout, } from '../api/firebase';
 import { useAuthContext } from '../context/AuthContext';
 import User from './User';
 import Button from './ui/Button';
+import useCarts from '../hooks/useCarts';
 
 export default function Header() {
 
-  const { user, cart } = useAuthContext();
+  const { user } = useAuthContext();
+  const { cartsQuery: {data: cart} } = useCarts();
 
   return (
     <header

@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { addCarts, howCart } from '../api/firebase';
 import Button from '../components/ui/Button';
-import { useAuthContext } from '../context/AuthContext';
+import useCarts from '../hooks/useCarts';
 
 export default function ProductDetail() {
   const { state: { product, product: { image, title, description, option, price } } } = useLocation();
-  const { user } = useAuthContext();
+  const { addQuery } = useCarts();
   
   const [selected, setSelected] = useState(option && option[0]);
   const handleSelect = (e) => setSelected(e.target.value);
   
   const [alram, setAlram] = useState('');
-  const handleClick = (e) => {
-    const uid = user && user.uid;
+  const handleClick = () => {
     const cart = { ...product, option: selected, quantity: 1 };
-    addCarts(uid, cart)
-      .then(() => setAlram('✅ 상품이 추가 되었습니다'))
-      .then(() => {
-        setTimeout(() => {
-          setAlram('');
-        }, 3000);
+    addQuery.mutate({ cart },
+      {
+        onSuccess: () => {
+          setAlram('✅ 상품이 추가 되었습니다');
+          setTimeout(() => setAlram(''), 3000);
+        },
       });
   };
   
