@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+# 👗 firebase, cloudinary를 이용한 반응형 Shopping Mall
+## [📌 배포 사이트](https://papershop.netlify.app/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img width="500px" src="https://user-images.githubusercontent.com/107424974/214815238-2fa9e41b-5e8c-4e97-a467-245edfcf07a5.gif"/>
+  <img width="500px" src="https://user-images.githubusercontent.com/107424974/214815926-573ad34f-3b17-41b6-8450-df961d11f875.gif"/>
 
-## Available Scripts
+#### 🗓 구현 일정 : 2022.12.25 - 2023.01.03
 
-In the project directory, you can run:
+</div>
 
-### `yarn start`
+</br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 목차
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. [프로젝트 실행 방법](#프로젝트-실행-방법)
+2. [구현사항](#구현사항)
 
-### `yarn test`
+</br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 프로젝트 실행 방법
 
-### `yarn build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# 프로젝트 패키지 설치
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# 로컬 실행
+npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# .env 파일에 해당 Firebase와 cloudinary 경로를 기입
+REACT_APP_FIREBASE_API_KEY=""
+REACT_APP_FIREBASE_AUTH_DOMAIN=""
+REACT_APP_FIREBASE_PROJECT_ID=""
+REACT_APP_FIREBASE_DB_URL=""
+REACT_APP_CLOUDINARY_URL=""
+REACT_APP_CLOUDINARY_PRESET="" 
+```
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 기술스택
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+> React, axios, react-query, react-router-dom, tailwind-css
+> 데이터 베이스와 구글 로그인 인증 시 Firebase, 이미지 업로드 시 cloudinary 이용
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<br>
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 구현사항
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### 1. protected Route를 이용해 경로 보호
 
-### Code Splitting
+#### 2. react-query 이용 로직을 hook으로 분리하여 관리
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+</br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Contributor
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<table>
+  <tbody>
+    <tr>
+      <td align="center"><a href="https://github.com/Paperkeem"><img src="https://user-images.githubusercontent.com/107424974/212338824-fc8fd767-7ed3-4600-9596-7665f823be03.jpeg" width="100px;" alt=""/><br /><sub><b>김종이</b></sub></a><br /></td>
+    </tr>
+  </tbody>
+</table>
