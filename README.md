@@ -48,6 +48,7 @@ REACT_APP_CLOUDINARY_PRESET=""
 ## 기술스택
 
 > React, axios, react-query, react-router-dom, tailwind-css
+<br>
 > 데이터 베이스와 구글 로그인 인증 시 Firebase, 이미지 업로드 시 cloudinary 이용
 
 <br>
