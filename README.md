@@ -1,4 +1,4 @@
-# 👗 firebase, cloudinary를 이용한 반응형 Shopping Mall
+# 👕 firebase, cloudinary를 이용한 반응형 Shopping Mall
 ## [📌 배포 사이트](https://papershop.netlify.app/)
 
 <div align="center">
@@ -47,9 +47,7 @@ REACT_APP_CLOUDINARY_PRESET=""
 
 ## 기술스택
 
-> React, axios, react-query, react-router-dom, tailwind-css
-<br>
-> 데이터 베이스와 구글 로그인 인증 시 Firebase, 이미지 업로드 시 cloudinary 이용
+> React, Firebase, cloudinary, axios, react-query, react-router-dom, tailwind-css
 
 <br>
 
@@ -58,7 +56,28 @@ REACT_APP_CLOUDINARY_PRESET=""
 
 #### 1. protected Route를 이용해 경로 보호
 
+https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/index.js#L15-L38
+https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/pages/ProtectedRoute.jsx#L1-L13
+
+  - 상품 입고 page는 **admin 아이디만 허용**
+  - cart page는 **로그인한 회원만 허용**
+  - `protectedRoute.jsx`를 이용해 로그인 상태를 판별하여, **비로그인 상태일 시** 주소에 직접 경로를 입력하더라도 main으로 이동
+
 #### 2. react-query 이용 로직을 hook으로 분리하여 관리
+
+https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/hooks/useCarts.jsx#L5-L13
+https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/pages/MyCart.jsx#L8-L12
+
+  - `useCarts.jsx`에 react-query의 ['cart'] key 이용 로직을 분리하여 관리를 용이하게 함
+
+#### 3. 데이터 베이스와 구글 로그인 인증 시 Firebase, 이미지 업로드 시 cloudinary 이용
+
+https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/api/firebase.js#L31-L36
+https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/context/AuthContext.jsx#L5-L23
+
+  - real time database와 구글 로그인은 firebase 이용
+  - 로그인 정보는 `context api`를 이용해 전역으로 관리
+  - 상품 입고시 상품 이미지 업로드는 cloudinary 이용
 
 
 </br>
