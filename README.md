@@ -70,6 +70,7 @@ https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6
 https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/hooks/useCarts.jsx#L5-L13
 https://github.com/Paperkeem/react-ShoppingMall/blob/ff05db334aa76f6fc026e0e1cb6cb1006b16f931/src/pages/MyCart.jsx#L8-L12
 
+  - cart page에서 수량 증감, 아이템 삭제 등의 action이 view에 실시간으로 반영 될 수 있도록 react-query의 mutate 함수를 이용
   - `useCarts.jsx`에 react-query의 ['cart'] key 이용 로직을 분리하여 관리를 용이하게 함
     
 <br>
